@@ -144,7 +144,7 @@ export class AutoSwagger {
   async json(routes: any, options: options) {
     if (process.env.NODE_ENV === "production") {
       const str = await this.readFile(options.path, "json");
-      return JSON.parse(str)
+      return JSON.parse(str);
     }
     return await this.generate(routes, options);
   }
@@ -411,7 +411,7 @@ export class AutoSwagger {
           if (
             typeof responses[responseCodes[method]] !== "undefined" &&
             typeof responses[responseCodes[method]]["description"] !==
-            "undefined"
+              "undefined"
           ) {
             description = responses[responseCodes[method]]["description"];
           }
@@ -549,7 +549,6 @@ export class AutoSwagger {
         sourceFile,
         action
       );
-
     }
     if (
       typeof customAnnotations !== "undefined" &&
@@ -592,9 +591,6 @@ export class AutoSwagger {
 
     const validatorSchemas = await this.getValidators();
     schemas = { ...schemas, ...validatorSchemas };
-
-
-
 
     return schemas;
   }
@@ -643,7 +639,6 @@ export class AutoSwagger {
       );
       console.error(e.message);
     }
-
 
     return validators;
   }
@@ -736,7 +731,7 @@ export class AutoSwagger {
   }
 
   private async getFiles(dir, files_) {
-    const fs = require("fs");
+    const fs = await import("fs");
     files_ = files_ || [];
     var files = await fs.readdirSync(dir);
     for (let i in files) {
